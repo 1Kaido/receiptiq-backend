@@ -28,21 +28,18 @@ with app.app_context():
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
-ALLOWED_EXTENSIONS = {"jpg", "jpeg", "png"}
 
 
-def allowed_file(filename):
-    return (
-        "." in filename
-        and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
-    )
+
+
 
 
 @app.route("/upload", methods=["POST"])
 def upload():
 
     image = request.files.get("image")
-
+    print(image.filename)
+    print(image.mimetype)
     if image is None:
         return jsonify({
             "success": False,
@@ -55,11 +52,6 @@ def upload():
             "message": "No file selected."
         }), 400
 
-    if not allowed_file(image.filename):
-        return jsonify({
-            "success": False,
-            "message": "Only JPG and PNG images are allowed."
-        }), 400
 
     extension = image.filename.rsplit(".", 1)[1].lower()
     filename = f"{uuid.uuid4()}.{extension}"
