@@ -18,7 +18,7 @@ def build_analytics_from_receipts(receipts):
     transaction_count = 0
 
     for r in receipts:
-        amount = convert_to_inr(float(r.get("total_amount", 0)),r.currency)
+        amount = float(r.get("total_amount", 0))
         category = r.get("purchase_category", "unknown")
         vendor = r.get("supplier_name", "unknown")
         date_str = r.get("date")
@@ -134,6 +134,7 @@ Return exactly this structure:
 
 Rules:
 - Use ACTUAL numbers from the data, never make up numbers
+-Always use indian currency symbol,absolutely dont follow the curreny on json use India currency Symbol not number 
 - Be specific and personal, not generic
 - insights and warnings must be under 20 words each
 - score value must be between 0 and 100
