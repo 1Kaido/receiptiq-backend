@@ -2,6 +2,7 @@ from collections import defaultdict
 from datetime import datetime
 from database.crud import get_detailed_receipts
 from config import GROQ_API_KEY
+from crud import convert_to_inr
 import json
 import requests
 
@@ -17,7 +18,7 @@ def build_analytics_from_receipts(receipts):
     transaction_count = 0
 
     for r in receipts:
-        amount = float(r.get("total_amount", 0))
+        amount = convert_to_inr(float(r.get("total_amount", 0)),r.currency)
         category = r.get("purchase_category", "unknown")
         vendor = r.get("supplier_name", "unknown")
         date_str = r.get("date")
