@@ -2,7 +2,6 @@ from collections import defaultdict
 from datetime import datetime
 from database.crud import get_detailed_receipts
 from config import GROQ_API_KEY
-from crud import convert_to_inr
 import json
 import requests
 
