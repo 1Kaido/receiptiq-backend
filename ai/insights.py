@@ -133,8 +133,10 @@ Return exactly this structure:
 }}
 
 Rules:
+- All monetary values are in Indian Rupees (INR).
+- Always use the ₹ symbol.
+- Never use $, USD, €, or any other currency symbol.
 - Use ACTUAL numbers from the data, never make up numbers
--Always use indian currency symbol,absolutely dont follow the curreny on json use India currency Symbol not number 
 - Be specific and personal, not generic
 - insights and warnings must be under 20 words each
 - score value must be between 0 and 100
