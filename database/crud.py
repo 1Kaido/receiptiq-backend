@@ -61,7 +61,8 @@ def save_receipt(data):
 import requests
 
 def convert_to_inr(amount, currency):
-    
+    if amount is None:
+        return 0
 
     if not currency:
         currency = "INR"   # your MVP default
